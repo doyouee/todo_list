@@ -1,0 +1,76 @@
+// REST Client 확장프로그램 깔면 사용가능하다.
+// 여기서 실행 후 DBeaver에서 확인해보면 데이터가 바뀌는 것을 확인할 수 있다.
+
+##############################<MEMBER INFO>###################################  #은 주석기호, 위아래 코드 구분 가능
+PUT http://localhost:9988/api/member/join HTTP/1.1
+content-type : application/json
+
+{
+    "email":"user01@service.com",
+    "pwd":"1234",
+    "name":"사용자",
+    "birth":"2022-12-14T00:00:00",
+    "reg_dt":"2022-12-14T00:00:00"
+}
+
+
+############################################################################
+
+// 로그인
+POST http://localhost:9988/api/member/login HTTP/1.1
+content-type : application/json
+
+{
+    "email":"user01@service.com",
+    "pwd":"1234"
+}
+
+
+
+
+############################################################################
+##############################<TODO LIST>###################################
+
+
+
+PUT http://localhost:9988/api/todo/add HTTP/1.1
+content-type : application/json
+
+{
+    # "content":"미니프로젝트 기간",
+    # "status":1,
+    # "startDt":"2022-12-19T00:00:00",
+    # "endDt":"2022-12-23T09:10:00"
+}   // Send Request 누르면 로그인하라는 에러뜸 → 바로 위 로그인test코드를 Send Request 한 뒤 (로그인 한 다음에) 
+    // → 다시 이 코드를 Send Request 하면 일정 추가 됐다고 정상적으로 뜸
+
+
+
+############################################################################
+GET http://localhost:9988/api/todo/list HTTP/1.1
+// 얘도 로그인 하고 난 다음에 Send Request 해줘야함.
+
+
+
+
+############################################################################
+PATCH http://localhost:9988/api/todo/update/status?seq=1&value=2 HTTP/1.1
+                                                            // 뒤에 HTTP/1.1 안써도 된대
+
+
+############################################################################
+PATCH http://localhost:9988/api/todo/update/content?seq=1&value=어쩌고저쩌고 HTTP/1.1
+                                                            // 뒤에 HTTP/1.1 안써도 된대
+
+
+
+
+
+############################################################################
+DELETE http://localhost:9988/api/todo/delete?seq=1 HTTP/1.1
+
+
+
+
+############################################################################
+GET http://localhost:9988/api/todo/list/term?start=20221227&end=20221230 //endDt를 기준으로 12/27~12/30 사이의 데이터 찾기
